@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to update the progress bar
     function updateProgressBar() {
-        const progressPercentage = (clickCount % 50) * 2; // 2% per click, resets at 50 clicks
+        const progressPercentage = (clickCount % 25) * 4; // 4% per click, resets at 25 clicks
         progressBar.style.height = `${progressPercentage}%`;
     }
 
@@ -179,21 +179,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update progress bar
         updateProgressBar();
 
-        // Reset progress bar after 50 clicks
-        if (clickCount % 50 === 0) {
+        // Reset progress bar after 25 clicks
+        if (clickCount % 25 === 0) {
             progressBar.style.height = '0%';
         }
 
-        // Add candles every 25 clicks
-        if (clickCount >= 25 && clickCount % 25 === 0) {
+        // Add candles every 5 clicks
+        if (clickCount >= 5 && clickCount % 5 === 0) {
             if (pendingRedCandle) {
-                // Add the second red candle after 25 clicks
+                // Add the second red candle after 5 clicks
                 addCandle('red');
                 pendingRedCandle = false;
             } else if (shouldAddRedCandle()) {
                 // Add the first red candle
                 addCandle('red');
-                // Set the flag to add a second red candle after 25 more clicks
+                // Set the flag to add a second red candle after 5 more clicks
                 pendingRedCandle = true;
             } else {
                 // Add a green candle
